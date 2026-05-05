@@ -23,9 +23,7 @@
         .page.active { display: block; }
 
         .hero {
-            /* TODO: Hintergrundbild-URL hier eintragen, z.B.:
-               background: url('https://...') center/cover; */
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #0f3460 100%);
+            background: url('hero.jpeg') center/cover;
             color: white;
             padding: 100px 20px 80px;
             text-align: center;
@@ -201,6 +199,52 @@
 
         footer p { margin: 10px 0; }
 
+        /* ── Countdown ── */
+
+        .countdown-box {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .countdown-label-next {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 10px 14px;
+            min-width: 66px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FFD700;
+            line-height: 1;
+            display: block;
+        }
+
+        .countdown-unit {
+            font-size: 0.7em;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            display: block;
+        }
+
         /* ── Datenschutzseite ── */
 
         .ds-header {
@@ -302,6 +346,10 @@
 <!-- ═══════════════════════════════════════════ -->
 <div id="page-main" class="page active">
 
+    <header style="background: white; padding: 20px 30px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <img src="logo.jpeg" alt="Poetry Slam Beginner Award Logo" style="max-height: 90px;">
+    </header>
+
     <div class="hero">
         <h1 class="hero-title">Poetry Slam Beginner Award</h1>
         <p class="hero-subtitle">Der Wettbewerb für neue Stimmen auf der Poetry-Slam-Bühne</p>
@@ -311,7 +359,7 @@
 
                 <div class="event-item">
                     <div class="event-date">01. Oktober 2026</div>
-                    <div class="event-title">PSBA#4 – Lange Nacht der Demokratie</div>
+                    <div class="event-title">Lange Nacht der Demokratie</div>
                     <div class="event-venue">Chili Kultur Kunst Kneipe · Dillingen a.d.Donau</div>
                     <div class="event-address">Georg-Schmid-Ring 1 (Zugang: Oberdillinger Straße) · 89407 Dillingen</div>
                     <div class="event-time">Beginn: 19:00 Uhr</div>
@@ -319,12 +367,33 @@
 
                 <div class="event-item">
                     <div class="event-date">13. November 2026</div>
-                    <div class="event-title">PSBA#5 – Wertingen</div>
+                    <div class="event-title">Poetry Slam Beginner Award Wertingen</div>
                     <div class="event-venue">Kleine Kulturbühne Wertingen</div>
                     <div class="event-address">Adresse folgt</div>
                     <div class="event-time">Beginn: 19:00 Uhr</div>
                 </div>
 
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-label-next" id="cd-next-label">Countdown zum nächsten Slam</div>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-days">--</span>
+                        <span class="countdown-unit">Tage</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-hours">--</span>
+                        <span class="countdown-unit">Stunden</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-minutes">--</span>
+                        <span class="countdown-unit">Minuten</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-seconds">--</span>
+                        <span class="countdown-unit">Sekunden</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -634,6 +703,40 @@
         document.getElementById('page-' + page).classList.add('active');
         window.scrollTo(0, 0);
     }
+
+    (function() {
+        var events = [
+            { date: new Date('2026-10-01T19:00:00'), label: 'Countdown bis Dillingen' },
+            { date: new Date('2026-11-13T19:00:00'), label: 'Countdown bis Wertingen' }
+        ];
+
+        function nextEvent() {
+            var now = new Date();
+            for (var i = 0; i < events.length; i++) {
+                if (events[i].date > now) return events[i];
+            }
+            return null;
+        }
+
+        function update() {
+            var ev = nextEvent();
+            if (!ev) {
+                document.getElementById('countdown').innerHTML =
+                    '<p style="color:#FFD700;font-size:1.1em;">Neue Veranstaltungen folgen bald!</p>';
+                document.getElementById('cd-next-label').textContent = '';
+                return;
+            }
+            var diff = ev.date - new Date();
+            if (diff <= 0) { update(); return; }
+            document.getElementById('cd-next-label').textContent = ev.label;
+            document.getElementById('cd-days').textContent    = Math.floor(diff / 86400000);
+            document.getElementById('cd-hours').textContent   = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+            document.getElementById('cd-minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+            document.getElementById('cd-seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+        }
+        update();
+        setInterval(update, 1000);
+    })();
 </script>
 
 </body>
