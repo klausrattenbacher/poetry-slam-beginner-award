@@ -859,6 +859,12 @@
     })();
 </script>
 
+<!-- Slams offen für Bewerbungen (hier pflegen) -->
+<ul id="bewerbung-offen" style="display:none">
+    <!-- Einträge mit <li data-datum="TT. Monat JJJJ" data-ort="Ort">Titel</li> -->
+    <!-- Beispiel: <li data-datum="01. Oktober 2026" data-ort="Dillingen a.d.Donau">PSBA #4 – Lange Nacht der Demokratie</li> -->
+</ul>
+
 <!-- Bewerbungs-Modal -->
 <div class="modal-overlay" id="bewerbungModal" onclick="closeBewerbungModalOnOverlay(event)">
     <div class="modal-box">
@@ -905,19 +911,24 @@
 
 <script>
     function openBewerbungModal() {
-        // Event-Liste dynamisch aus der Hauptseite lesen
+        // Offene Bewerbungs-Slams aus der versteckten Liste lesen
         var notice = document.getElementById('modal-event-list');
-        var items = document.querySelectorAll('.event-item');
-        var html = '<p><strong>Aktuelle Veranstaltungen:</strong></p>';
-        if (items.length === 0) {
-            html += '<p>Aktuell sind keine Veranstaltungen geplant.</p>';
+        var offene = document.querySelectorAll('#bewerbung-offen li');
+        var html;
+        if (offene.length === 0) {
+            html = '<p>Du findest deine Wunschveranstaltung hier nicht?</p>' +
+                   '<p>Dann ist die Liste für Voranmeldungen leider schon voll!</p>' +
+                   '<p>Wir schalten aber bald neue Termine frei.</p>' +
+                   '<p>Oder - bewirb dich einfach Initiativ!</p>';
         } else {
-            items.forEach(function(item) {
-                var date  = (item.querySelector('.event-date')  || {}).textContent || '';
-                var title = (item.querySelector('.event-title') || {}).textContent || '';
-                var venue = (item.querySelector('.event-venue') || {}).textContent || '';
-                html += '<p>📅 <strong>' + title + '</strong><br>' + date + ' · ' + venue + '</p>';
+            html = '<p><strong>Jetzt bewerben für:</strong></p>';
+            offene.forEach(function(li) {
+                var datum = li.getAttribute('data-datum') || '';
+                var ort   = li.getAttribute('data-ort')   || '';
+                html += '<p>📅 <strong>' + li.textContent.trim() + '</strong><br>' +
+                        datum + (ort ? ' · ' + ort : '') + '</p>';
             });
+            html += '<p>Oder - bewirb dich einfach Initiativ!</p>';
         }
         notice.innerHTML = html;
         document.getElementById('bewerbungModal').classList.add('active');
