@@ -106,6 +106,25 @@
             opacity: 0.85;
         }
 
+        .event-ticket {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 18px;
+            background: #FFD700;
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 0.9em;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .event-ticket:hover {
+            background: #ffe44d;
+            transform: translateY(-1px);
+        }
+
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -486,7 +505,11 @@
                     <div class="event-venue">Chili Kultur Kunst Kneipe · Dillingen a.d.Donau</div>
                     <div class="event-address">Georg-Schmid-Ring 1 (Zugang: Oberdillinger Straße) · 89407 Dillingen</div>
                     <div class="event-time">Beginn: 19:00 Uhr</div>
-                    <!-- Ticket-Link PSBA#4: hier URL eintragen sobald verfügbar -->
+                    <a href="javascript:void(0)"
+                       onclick="window.top.open('https://ratsontour.tickettune.com/ratsontour/detail/index/sArticle/14', '_blank');"
+                       class="event-ticket">
+                        🎟️ Tickets sichern
+                    </a>
                 </div>
 
                 <div class="event-item">
@@ -527,15 +550,27 @@
         <div class="container">
             <h2>Was ist der Poetry Slam Beginner Award?</h2>
             <p>
-                Der Poetry Slam Beginner Award bringt neue Gesichter auf die Poetry-Slam-Bühne –
-                Menschen, die noch keine Profis sind. Sie leben noch nicht von ihrer Kunst und haben
-                entweder noch gar keine oder erst wenig Bühnenerfahrung.
+                Der Poetry Slam Beginner Award ist ein Bühnenwettbewerb für neue Stimmen in der
+                Spoken-Word- und Poetry-Slam-Szene. Der Begriff „Beginner" ist dabei bewusst englisch
+                gewählt: Während „Anfänger" im Deutschen oft negativ konnotiert ist, klingt „Beginner"
+                neutral, modern und nach einem selbstbewussten ersten Schritt. Englische Bezeichnungen
+                werten eine Kategorie automatisch auf – und geben ihr, wie bei „Senior" oder
+                „Challenge", einen eigenen, positiv besetzten Status.
             </p>
             <p>
-                Beim Beginner Award treten alle Teilnehmenden auf einem ähnlichen Niveau gegeneinander an.
-                Diese Chancengleichheit soll die Motivation erhöhen und die Hemmung vor dem ersten Auftritt nehmen.
-                Außer einem Special Guest treten keine Profis im Wettbewerb auf – so bekommen neue Talente
-                mehr Raum, Bühnenerfahrung zu sammeln.
+                4–8 Teilnehmende im Wettbewerb – allesamt Newcomer und Semi-Profis – tragen eigene
+                Texte, mit max. 7 Minuten Länge, vor Publikum vor. Ein bekannter Special Guest tritt
+                außerhalb des Wettbewerbs auf und sorgt für Strahl- und Anziehungskraft – und rückt
+                die Beginner und den Wettbewerb damit noch mehr ins Rampenlicht. Durch den Abend führt
+                eine/r bekannte/r Moderator:in. Das Publikum entscheidet per digitalem Voting
+                (Mentimeter), wer gewinnt.
+            </p>
+            <p>
+                Das Format richtet sich ausdrücklich an Menschen, die noch nicht von ihrer Kunst
+                leben – ab der Altersklasse 16 Jahre (in Ausnahmefällen und mit ausdrücklicher
+                Genehmigung der Eltern können auch jüngere Personen teilnehmen), aus der Region oder
+                darüber hinaus. Das Ergebnis ist ein authentischer, emotionaler Kulturabend, der
+                Teilnehmende und Publikum gleichermaßen begeistert.
             </p>
         </div>
     </div>
@@ -549,8 +584,10 @@
                     <div>
                         <h3>🎤 Für Beginner</h3>
                         <p>
-                            Du möchtest auf die Bühne? Bewirb dich! Teilnehmen darf jede Person ab 15 Jahren –
-                            egal ob du noch nie auf der Bühne standst oder erst wenige Auftritte hattest.
+                            Du möchtest auf die Bühne? Bewirb dich! Teilnehmen darf jede Person ab 16 Jahren
+                            (In Ausnahmefällen und mit ausdrücklicher Genehmigung der Eltern können auch
+                            jüngere Personen teilnehmen) –
+                            egal ob du noch nie auf der Bühne gestanden hast oder erst wenige Auftritte hattest.
                         </p>
                     </div>
                     <div class="info-card-bottom">
