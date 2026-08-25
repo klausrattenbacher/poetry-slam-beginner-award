@@ -1012,6 +1012,10 @@
                 <input type="text" id="bf-beschreibung" placeholder="z.B. persönlich, politisch, lustig, poetisch …" required>
             </div>
             <div class="form-group">
+                <label for="bf-buehne">Wann standest du das erste Mal bei einem Slam auf der Bühne und wie oft seitdem? <span style="color:#c0392b">*</span></label>
+                <input type="text" id="bf-buehne" placeholder="z.B. das erste Mal 2023, seitdem etwa 5 Auftritte" required>
+            </div>
+            <div class="form-group">
                 <label for="bf-instagram">Instagram</label>
                 <input type="text" id="bf-instagram" placeholder="Dein Instagram-Accountname">
             </div>
@@ -1074,6 +1078,7 @@
         var newsletter   = document.getElementById('bf-newsletter').checked ? 'Ja' : 'Nein';
         var nachricht    = document.getElementById('bf-nachricht').value.trim();
         var beschreibung = document.getElementById('bf-beschreibung').value.trim();
+        var buehne       = document.getElementById('bf-buehne').value.trim();
         var instagram    = document.getElementById('bf-instagram').value.trim();
 
         return 'Name: ' + name + '\n' +
@@ -1082,6 +1087,7 @@
             'Newcomer-Newsletter: ' + newsletter + '\n' +
             (nachricht ? 'Nachricht: ' + nachricht + '\n' : '') +
             'Text & Auftritt: ' + beschreibung + '\n' +
+            'Bühnenerfahrung: ' + buehne + '\n' +
             (instagram ? 'Instagram: ' + instagram + '\n' : '');
     }
 
@@ -1100,7 +1106,8 @@
         // Für den Social-Weg nur die inhaltlichen Pflichtfelder prüfen (ohne E-Mail)
         var pflicht = [
             { id: 'bf-name',         label: 'Name' },
-            { id: 'bf-beschreibung', label: 'Text & Auftritt' }
+            { id: 'bf-beschreibung', label: 'Text & Auftritt' },
+            { id: 'bf-buehne',       label: 'Bühnenerfahrung' }
         ];
         for (var i = 0; i < pflicht.length; i++) {
             var feld = document.getElementById(pflicht[i].id);
