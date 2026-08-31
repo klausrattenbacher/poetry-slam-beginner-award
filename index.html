@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poetry Slam Beginner Award</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <title>Poetry Slam Donauwörth</title>
     <style>
         * {
             margin: 0;
@@ -26,118 +23,49 @@
         .page.active { display: block; }
 
         .hero {
-            background: url('hero.jpeg') top left/cover;
+            background:
+url('https://img1.wsimg.com/isteam/ip/b3750489-1fb8-4215-899c-095dfbba0773/Poetry%20Slam%202025%20Harburg%2084.jpg')
+center 15%/cover;
             color: white;
-            padding: 100px 20px 80px;
+            padding: 120px 20px 80px;
             text-align: center;
             position: relative;
         }
 
         .hero-title {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: fadeInDown 1s ease;
         }
 
-        .hero-subtitle {
-            font-size: 1.3em;
-            margin-bottom: 35px;
-            opacity: 0.85;
-            animation: fadeInDown 1s ease 0.1s both;
+        .slam-number {
+            font-weight: 900;
+            color: #FFD700;
+            font-size: 1.2em;
         }
 
-        .event-box {
-            background: rgba(255,255,255,0.12);
+        .next-event {
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.25);
+            border: 2px solid rgba(255,255,255,0.3);
             border-radius: 15px;
             padding: 30px;
-            max-width: 680px;
+            max-width: 600px;
             margin: 0 auto;
             animation: fadeInUp 1s ease 0.3s both;
         }
 
-        .event-box h2 {
+        .next-event h2 { font-size: 2em; margin-bottom: 15px; }
+
+        .next-event .date {
             font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        .event-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .event-item {
-            background: rgba(255,255,255,0.1);
-            border-left: 4px solid #FFD700;
-            border-radius: 8px;
-            padding: 16px 20px;
-            text-align: left;
-        }
-
-        .event-date {
-            font-size: 1.25em;
             font-weight: bold;
+            margin: 15px 0;
             color: #FFD700;
-            margin-bottom: 4px;
         }
 
-        .event-title {
-            font-size: 1.05em;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-
-        .event-venue {
-            font-size: 0.95em;
-            margin-bottom: 2px;
-        }
-
-        .event-address {
-            font-size: 0.88em;
-            opacity: 0.8;
-        }
-
-        .event-time {
-            font-size: 0.88em;
-            margin-top: 6px;
-            opacity: 0.85;
-        }
-
-        .event-ticket {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 18px;
-            background: #FFD700;
-            color: #1a1a1a;
-            font-weight: 700;
-            font-size: 0.9em;
-            border-radius: 6px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-        }
-
-        .event-ticket:hover {
-            background: #ffe44d;
-            transform: translateY(-1px);
-        }
-
-        .event-ticket-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-        .event-ticket-row .event-ticket { margin-top: 0; }
-        .event-ticket-status {
-            font-size: 0.9em;
-            font-weight: 600;
-            color: #555;
-        }
+        .next-event .time { font-size: 1.2em; margin: 10px 0; }
 
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
@@ -235,50 +163,44 @@
 
         footer p { margin: 10px 0; }
 
-        /* ── Countdown ── */
-
-        .countdown-box {
-            margin-top: 20px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255,255,255,0.25);
+        .venues {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
-        .countdown-label-next {
-            font-size: 0.85em;
-            opacity: 0.8;
-            margin-bottom: 10px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            background: rgba(255,255,255,0.2);
-            border-radius: 10px;
-            padding: 10px 14px;
-            min-width: 66px;
+        .venues h3 {
+            color: #8A2387;
+            margin-bottom: 20px;
+            font-size: 1.5em;
             text-align: center;
         }
 
-        .countdown-number {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #FFD700;
-            line-height: 1;
-            display: block;
+        .venue-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            max-width: 90%;
+            margin: 0 auto;
         }
 
-        .countdown-unit {
-            font-size: 0.7em;
-            opacity: 0.85;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
-            display: block;
+        .venue-item {
+            margin: 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid #E94057;
+            border-radius: 5px;
+        }
+
+        .venue-item strong { color: #8A2387; font-size: 1.2em; }
+
+        .hero-credit {
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            font-size: 0.75em;
+            color: rgba(255,255,255,0.75);
         }
 
         /* ── Datenschutzseite ── */
@@ -367,19 +289,10 @@
         }
 
         @media (max-width: 768px) {
-            header img { max-height: 110px; }
-            .hero-title { font-size: 1.8em; }
-            .hero-subtitle { font-size: 1.1em; }
-            .event-box { padding: 20px 15px; }
-            .event-box h2 { font-size: 1.3em; }
-            .event-date { font-size: 1.1em; }
-            .event-title { font-size: 0.95em; }
-            .event-address, .event-time { font-size: 0.82em; }
-            .countdown-number { font-size: 1.5em; }
-            .countdown-item { min-width: 58px; padding: 8px 10px; }
-            .section h2 { font-size: 1.8em; }
-            .info-card { padding: 25px; }
-            .info-card h3 { font-size: 1.4em; }
+            .hero-title { font-size: 2em; }
+            .next-event h2 { font-size: 1.5em; }
+            .section h2 { font-size: 2em; }
+            .venue-grid { grid-template-columns: 1fr; }
             .ds-container { padding: 20px; margin: 20px; }
             .ds-header h1 { font-size: 1.8em; }
         }
@@ -392,13 +305,11 @@
             background: rgba(0,0,0,0.65);
             z-index: 1000;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             padding: 40px 20px;
             overflow-y: auto;
         }
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
         .modal-box {
             background: #fff;
             border-radius: 12px;
@@ -406,23 +317,16 @@
             max-width: 560px;
             width: 100%;
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
             box-shadow: 0 8px 40px rgba(0,0,0,0.3);
         }
-        .modal-box h2 {
-            font-size: 1.5em;
-            margin-bottom: 6px;
-            color: #1a1a2e;
-        }
+        .modal-box h2 { font-size: 1.5em; margin-bottom: 6px; color: #1a1a2e; }
         .modal-close {
             position: absolute;
-            top: 14px;
-            right: 18px;
-            background: none;
-            border: none;
-            font-size: 1.6em;
-            cursor: pointer;
-            color: #666;
-            line-height: 1;
+            top: 14px; right: 18px;
+            background: none; border: none;
+            font-size: 1.6em; cursor: pointer; color: #666; line-height: 1;
         }
         .modal-close:hover { color: #000; }
         .modal-notice {
@@ -430,77 +334,41 @@
             border-left: 4px solid #f9a825;
             padding: 10px 14px;
             border-radius: 4px;
-            font-size: 0.85em;
-            color: #555;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            font-size: 0.85em; color: #555;
+            margin-bottom: 20px; line-height: 1.5;
         }
-        .modal-notice a { color: #c0392b; }
         .modal-notice p { margin-bottom: 6px; }
         .modal-notice p:last-child { margin-bottom: 0; }
-        .form-group {
-            margin-bottom: 16px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 0.9em;
-            margin-bottom: 5px;
-            color: #222;
-        }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9em; margin-bottom: 5px; color: #222; }
         .form-group input[type="text"],
         .form-group input[type="email"],
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 9px 12px;
-            border: 1.5px solid #ccc;
-            border-radius: 6px;
-            font-size: 0.95em;
-            font-family: inherit;
-            transition: border-color 0.2s;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: #6a1b9a;
-            outline: none;
-        }
         .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
+            width: 100%; padding: 9px 12px;
+            border: 1.5px solid #ccc; border-radius: 6px;
+            font-size: 0.95em; font-family: inherit; transition: border-color 0.2s;
         }
+        .form-group input:focus, .form-group textarea:focus { border-color: #8A2387; outline: none; }
+        .form-group textarea { resize: vertical; min-height: 80px; }
         .form-group-check {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 16px;
-            font-size: 0.9em;
-            color: #333;
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 16px; font-size: 0.9em; color: #333;
         }
         .form-group-check input { margin-top: 3px; flex-shrink: 0; }
         .modal-submit {
-            width: 100%;
-            padding: 12px;
-            background: #6a1b9a;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 6px;
+            width: 100%; padding: 12px;
+            background: #8A2387; color: #fff;
+            border: none; border-radius: 8px;
+            font-size: 1em; font-weight: 700; cursor: pointer;
+            transition: background 0.2s; margin-top: 6px;
         }
-        .modal-submit:hover { background: #4a148c; }
-
+        .modal-submit:hover { background: #6d1a6b; }
         .channel-hint {
             margin: 14px 0 8px;
             font-size: 0.9em;
             font-weight: 600;
             text-align: center;
         }
-
         .channel-subhint {
             margin: 0 0 12px;
             font-size: 0.8em;
@@ -508,34 +376,33 @@
             text-align: center;
             opacity: 0.7;
         }
-
         .channel-buttons {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
-
-        .channel-buttons .modal-submit {
-            margin-top: 0;
-        }
-
-        .channel-instagram {
-            background: #C13584;
-        }
+        .channel-buttons .modal-submit { margin-top: 0; }
+        .channel-instagram { background: #C13584; }
         .channel-instagram:hover { background: #a02c6f; }
-
-        .channel-facebook {
-            background: #1877F2;
-        }
+        .channel-facebook { background: #1877F2; }
         .channel-facebook:hover { background: #135ec0; }
-
         .channel-note {
             margin-top: 10px;
             font-size: 0.85em;
             text-align: center;
-            color: #6a1b9a;
+            color: #8A2387;
             min-height: 1.2em;
         }
+        .site-header {
+            background: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        .site-header img {
+            max-height: 200px;
+            width: auto;
+        }
+
         .intro-section {
             background: url('https://img1.wsimg.com/isteam/ip/b3750489-1fb8-4215-899c-095dfbba0773/blob-69ae7bd.png') center/cover no-repeat;
             position: relative;
@@ -561,6 +428,7 @@
             max-width: 700px;
             margin: 0 auto;
         }
+
         .info-bar {
             background: white;
             color: #1a3a6b;
@@ -568,6 +436,55 @@
             padding: 20px;
             font-size: 1.8em;
             font-weight: bold;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+        .ticket-row {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .ticket-status {
+            font-size: 1em;
+            font-weight: 700;
+            color: #1a1a1a;
+            background: #FFD700;
+            padding: 6px 14px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .ticket-status:empty { display: none; }
+        .countdown-item {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            padding: 12px 16px;
+            min-width: 70px;
+            text-align: center;
+        }
+        .countdown-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #FFD700;
+            line-height: 1;
+            display: block;
+        }
+        .countdown-label {
+            font-size: 0.7em;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            display: block;
         }
     </style>
 </head>
@@ -578,8 +495,9 @@
 <!-- ═══════════════════════════════════════════ -->
 <div id="page-main" class="page active">
 
-    <header style="background: white; padding: 20px 30px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <img src="logo.jpeg" alt="Poetry Slam Beginner Award Logo" style="max-height: 180px;">
+    <!-- LOGO ganz oben -->
+    <header class="site-header">
+        <img src="logo.png" alt="Poetry Slam Donauwörth Logo">
     </header>
 
     <!-- KINOSESSEL-INTRO -->
@@ -592,85 +510,102 @@
     <div class="info-bar">Informationen und Poetry Slam Tickets</div>
 
     <div class="hero">
-        <h1 class="hero-title">Poetry Slam Beginner Award</h1>
-        <p class="hero-subtitle">Der Wettbewerb für neue Stimmen auf der Poetry-Slam-Bühne</p>
-        <div class="event-box">
-            <h2>Nächste Veranstaltungen</h2>
-            <div class="event-list">
+        <h1 class="hero-title">Poetry Slam Donauwörth</h1>
 
-                <div class="event-item" id="event-4" data-datum="2026-10-01T19:30:00">
-                    <div class="event-date">01. Oktober 2026</div>
-                    <div class="event-title">Poetry Slam Beginner Award #4 – Lange Nacht der Demokratie</div>
-                    <div class="event-venue">Chili Kultur Kunst Kneipe · Dillingen a.d.Donau</div>
-                    <div class="event-address">Georg-Schmid-Ring 1 (Zugang: Oberdillinger Straße) · 89407 Dillingen</div>
-                    <div class="event-time">Einlass: 18:30 Uhr | Beginn: 19:30 Uhr</div>
-                    <div class="event-ticket-row">
-                        <a href="javascript:void(0)"
-                           onclick="window.top.open('https://ratsontour.tickettune.com/ratsontour/detail/index/sArticle/14', '_blank');"
-                           class="event-ticket">
-                            🎟️ Tickets sichern
-                        </a>
-                        <span class="event-ticket-status" id="ticketstatus-4"></span>
-                    </div>
+        <div class="next-event" id="event-11">
+            <h2>Poetry Slam Donauwörth #11</h2>
+            <div class="date">12. November 2026</div>
+            <div class="time">Einlass: 18:00 Uhr | Beginn: 19:00 Uhr</div>
+            <p style="margin-top: 20px; font-size: 1.1em;">AULA des Gymnasium Donauwörth</p>
+            <div class="countdown" id="countdown-11">
+                <div class="countdown-item">
+                    <span class="countdown-number cd11-days">--</span>
+                    <span class="countdown-label">Tage</span>
                 </div>
-
-                <div class="event-item" id="event-5" data-datum="2026-11-13T19:00:00">
-                    <div class="event-date">13. November 2026</div>
-                    <div class="event-title">Poetry Slam Beginner Award #5 – Wertingen</div>
-                    <div class="event-venue">Kleine Kulturbühne Wertingen</div>
-                    <div class="event-address">Josef-Frank-Straße 1, 86637 Wertingen</div>
-                    <div class="event-time">Einlass: 18:00 Uhr | Beginn: 19:00 Uhr</div>
-                    <div class="event-ticket-row">
-                        <a href="javascript:void(0)"
-                           onclick="window.top.open('https://ratsontour.tickettune.com/ratsontour/detail/index/sArticle/15', '_blank');"
-                           class="event-ticket">
-                            🎟️ Tickets sichern
-                        </a>
-                        <span class="event-ticket-status" id="ticketstatus-5"></span>
-                    </div>
+                <div class="countdown-item">
+                    <span class="countdown-number cd11-hours">--</span>
+                    <span class="countdown-label">Stunden</span>
                 </div>
-
-            </div>
-            <div class="countdown-box" id="countdown-box-1">
-                <div class="countdown-label-next" id="cd1-label">Countdown bis Dillingen</div>
-                <div class="countdown" id="countdown-1">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd1-days">--</span>
-                        <span class="countdown-unit">Tage</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd1-hours">--</span>
-                        <span class="countdown-unit">Stunden</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd1-minutes">--</span>
-                        <span class="countdown-unit">Minuten</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd1-seconds">--</span>
-                        <span class="countdown-unit">Sekunden</span>
-                    </div>
+                <div class="countdown-item">
+                    <span class="countdown-number cd11-minutes">--</span>
+                    <span class="countdown-label">Minuten</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number cd11-seconds">--</span>
+                    <span class="countdown-label">Sekunden</span>
                 </div>
             </div>
-            <div class="countdown-box" id="countdown-box-2">
-                <div class="countdown-label-next" id="cd2-label">Countdown bis Wertingen</div>
-                <div class="countdown" id="countdown-2">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd2-days">--</span>
-                        <span class="countdown-unit">Tage</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd2-hours">--</span>
-                        <span class="countdown-unit">Stunden</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd2-minutes">--</span>
-                        <span class="countdown-unit">Minuten</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd2-seconds">--</span>
-                        <span class="countdown-unit">Sekunden</span>
-                    </div>
+            <div class="ticket-row">
+                <a href="javascript:void(0)"
+                   onclick="event.preventDefault(); event.stopPropagation();
+window.top.open('https://tickettune.com/ratsontour/veranstaltungen/', '_blank');"
+                   class="cta-button"
+                   style="display: inline-block;">
+                    🎟️ Tickets kaufen
+                </a>
+                <span class="ticket-status" id="ticketstatus-11"></span>
+            </div>
+        </div>
+
+        <div class="next-event" id="event-12" style="margin-top: 30px;">
+            <h2>Poetry Slam Donauwörth #12</h2>
+            <div class="date">15. April 2027</div>
+            <div class="time">Einlass: 18:00 Uhr | Beginn: 19:00 Uhr</div>
+            <p style="margin-top: 20px; font-size: 1.1em;">AULA der FOS Donauwörth</p>
+            <div class="countdown" id="countdown-12">
+                <div class="countdown-item">
+                    <span class="countdown-number cd12-days">--</span>
+                    <span class="countdown-label">Tage</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number cd12-hours">--</span>
+                    <span class="countdown-label">Stunden</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number cd12-minutes">--</span>
+                    <span class="countdown-label">Minuten</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number cd12-seconds">--</span>
+                    <span class="countdown-label">Sekunden</span>
+                </div>
+            </div>
+            <div class="ticket-row">
+                <a href="javascript:void(0)"
+                   onclick="event.preventDefault(); event.stopPropagation();
+window.top.open('https://tickettune.com/ratsontour/veranstaltungen/', '_blank');"
+                   class="cta-button"
+                   style="display: inline-block;">
+                    🎟️ Tickets kaufen
+                </a>
+                <span class="ticket-status" id="ticketstatus-12"></span>
+            </div>
+        </div>
+
+        <p class="hero-credit">© Michael Steger</p>
+    </div>
+
+    <div class="container" style="padding: 40px 20px;">
+        <div class="venues">
+            <h3>Unsere Veranstaltungsorte</h3>
+            <div class="venue-grid">
+                <div class="venue-item">
+                    <strong>Frühjahr (März/April):</strong><br>
+                    AULA der FOS Donauwörth<br>
+                    <a href="javascript:void(0)"
+                       onclick="window.top.open('https://maps.app.goo.gl/sV52FvLR4t41Xamk6', '_blank');"
+                       style="color: #E94057; font-size: 0.95em; text-decoration: none; cursor: pointer;">
+                        📍 Auf Google Maps anzeigen
+                    </a>
+                </div>
+                <div class="venue-item" style="text-align: right; border-left: none; border-right: 4px solid #E94057;">
+                    <strong>Herbst (November):</strong><br>
+                    AULA des Gymnasium Donauwörth<br>
+                    <a href="javascript:void(0)"
+                       onclick="window.top.open('https://maps.app.goo.gl/L1SyfSFeHgHbJAEx8', '_blank');"
+                       style="color: #E94057; font-size: 0.95em; text-decoration: none; cursor: pointer;">
+                        📍 Auf Google Maps anzeigen
+                    </a>
                 </div>
             </div>
         </div>
@@ -678,29 +613,16 @@
 
     <div class="about">
         <div class="container">
-            <h2>Was ist der Poetry Slam Beginner Award?</h2>
+            <h2>Was ist Poetry Slam?</h2>
             <p>
-                Der Poetry Slam Beginner Award ist ein Bühnenwettbewerb für neue Stimmen in der
-                Spoken-Word- und Poetry-Slam-Szene. Der Begriff „Beginner" ist dabei bewusst englisch
-                gewählt: Während „Anfänger" im Deutschen oft negativ konnotiert ist, klingt „Beginner"
-                neutral, modern und nach einem selbstbewussten ersten Schritt. Englische Bezeichnungen
-                werten eine Kategorie automatisch auf – und geben ihr, wie bei „Senior" oder
-                „Challenge", einen eigenen, positiv besetzten Status.
+                Poetry Slam ist ein literarischer Wettbewerb, bei dem Poet:innen ihre selbstverfassten Texte
+                auf der Bühne performen. Egal ob Lyrik, Prosa oder Rap – all das ist ohne Musik erlaubt!
+                Das Publikum entscheidet per digitalem Voting (Mentimeter), wer weiterkommt oder gewinnt.
             </p>
             <p>
-                4–8 Teilnehmende im Wettbewerb – allesamt Newcomer und Fortgeschrittene – tragen eigene
-                Texte, mit max. 7 Minuten Länge, vor Publikum vor. Ein bekannter Special Guest tritt
-                außerhalb des Wettbewerbs auf und sorgt für Strahl- und Anziehungskraft – und rückt
-                die Beginner und den Wettbewerb damit noch mehr ins Rampenlicht. Durch den Abend führt
-                eine/r bekannte/r Moderator:in. Das Publikum entscheidet per digitalem Voting
-                (Mentimeter), wer gewinnt.
-            </p>
-            <p>
-                Das Format richtet sich ausdrücklich an Menschen, die noch nicht von ihrer Kunst
-                leben – ab der Altersklasse 16 Jahre (in Ausnahmefällen und mit ausdrücklicher
-                Genehmigung der Eltern können auch jüngere Personen teilnehmen), aus der Region oder
-                darüber hinaus. Das Ergebnis ist ein authentischer, emotionaler Kulturabend, der
-                Teilnehmende und Publikum gleichermaßen begeistert.
+                In Donauwörth hat sich Poetry Slam zu einem erfolgreichen Format entwickelt,
+                das viele begeisterte Zuschauer:innen und Zuhörer:innen anzieht.
+                Zweimal im Jahr verwandeln sich die Aulen an beiden Schulen in Bühnen für großartige Wortkunst!
             </p>
         </div>
     </div>
@@ -712,16 +634,14 @@
 
                 <div class="info-card">
                     <div>
-                        <h3>🎤 Für Beginner</h3>
+                        <h3>🎤 Für Slammer:innen</h3>
                         <p>
-                            Du möchtest auf die Bühne? Bewirb dich! Teilnehmen darf jede Person ab 16 Jahren
-                            (In Ausnahmefällen und mit ausdrücklicher Genehmigung der Eltern können auch
-                            jüngere Personen teilnehmen) –
-                            egal ob du noch nie auf der Bühne gestanden hast oder erst wenige Auftritte hattest.
+                            Du möchtest auf die Bühne? Melde dich an!
+                            Egal ob Poetry Slam Neuling oder erfahrener Bühnenprofi – jede:r ist willkommen.
                         </p>
                     </div>
                     <div class="info-card-bottom">
-                        <button onclick="openBewerbungModal()"
+                        <button type="button" onclick="event.preventDefault(); openBewerbungModal();"
                                 class="cta-button"
                                 style="font-size: 1em; padding: 12px 30px; cursor: pointer;">
                             ✉️ Jetzt bewerben
@@ -733,32 +653,37 @@
                     <div>
                         <h3>🎭 Für Zuschauer:innen</h3>
                         <p>
-                            Erlebe einen Abend voller frischer Stimmen, unerwarteter Texte und echter Emotionen.
-                            Sei dabei, wenn neue Talente ihre ersten Schritte auf der Bühne machen!
+                            Erlebe einen unterhaltsamen Abend voller Wortakrobatik, Emotionen und Überraschungen.
+                            Sichere dir rechtzeitig deine Tickets für den nächsten Slam!
                         </p>
-                        <p style="margin-top: 15px; font-size: 0.95em; opacity: 0.85;">
-                            🎟️ Tickets direkt bei der jeweiligen Veranstaltung – Infos folgen!
-                        </p>
+                    </div>
+                    <div class="info-card-bottom">
+                        <a href="javascript:void(0)"
+                           onclick="window.top.open('https://tickettune.com/ratsontour/veranstaltungen/', '_blank');"
+                           class="cta-button"
+                           style="font-size: 1em; padding: 12px 30px;">
+                            Tickets sichern
+                        </a>
                     </div>
                 </div>
 
                 <div class="info-card">
                     <div>
-                        <h3>📲 Auf dem Laufenden bleiben</h3>
+                        <h3>📅 Regelmäßig dabei sein</h3>
                         <p>
-                            Folge uns auf Social Media und verpasse keine Veranstaltung, keinen Aufruf zur
-                            Bewerbung und keine Neuigkeit rund um den Beginner Award!
+                            Zweimal im Jahr – im Frühjahr und im November – geht es rund in Donauwörth.
+                            Folge uns auf Social Media, um keine Termine zu verpassen!
                         </p>
                     </div>
                     <div class="info-card-bottom" style="display: flex; flex-direction: column; gap: 10px;">
                         <a href="javascript:void(0)"
-                           onclick="window.top.open('https://www.facebook.com/profile.php?id=61558313168258', '_blank');"
+                           onclick="window.top.open('https://www.facebook.com/slamdonauwoerth/', '_blank');"
                            class="cta-button"
                            style="font-size: 1em; padding: 12px 30px; text-align: center;">
                             📘 Facebook
                         </a>
                         <a href="javascript:void(0)"
-                           onclick="window.top.open('https://www.instagram.com/poetryslambeginner/', '_blank');"
+                           onclick="window.top.open('https://www.instagram.com/poetryslamdon/', '_blank');"
                            class="cta-button"
                            style="font-size: 1em; padding: 12px 30px; text-align: center;">
                             📸 Instagram
@@ -773,7 +698,8 @@
     <footer>
         <p><strong>Veranstalter:</strong> Klaus Rattenbacher</p>
         <p style="margin-top: 20px;">
-            📧 <a href="mailto:klaus.rattenbacher@outlook.com" style="color: #FFD700; text-decoration: none;">klaus.rattenbacher@outlook.com</a><br>
+            📧 <a href="mailto:klaus.rattenbacher@outlook.com" style="color: #FFD700; text-decoration:
+none;">klaus.rattenbacher@outlook.com</a><br>
             📱 <a href="tel:+491712819755" style="color: #FFD700; text-decoration: none;">+49 171 2819755</a>
         </p>
         <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
@@ -783,11 +709,12 @@
             Heckenrosenstr. 9<br>
             86609 Donauwörth
         </p>
-        <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9em; color: rgba(255,255,255,0.7);">
-            <strong style="color: white;">Streitschlichtung</strong><br>
-            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
-            Verbraucherschlichtungsstelle teilzunehmen.
-        </p>
+        <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9em;
+color: rgba(255,255,255,0.7);">
+             <strong style="color: white;">Streitschlichtung</strong><br>
+    Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+    Verbraucherschlichtungsstelle teilzunehmen.
+</p>
         <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
             <a href="javascript:void(0)"
                onclick="showPage('datenschutz')"
@@ -795,7 +722,7 @@
                 Datenschutzerklärung
             </a>
         </p>
-        <p style="margin-top: 20px;">© 2026 Poetry Slam Beginner Award</p>
+        <p style="margin-top: 20px;">© 2026 Poetry Slam Donauwörth</p>
     </footer>
 
 </div>
@@ -814,7 +741,12 @@
     <div class="ds-container">
 
         <h2 id="m716">Präambel</h2>
-        <p>Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz als "Daten" bezeichnet) wir zu welchen Zwecken und in welchem Umfang verarbeiten. Die Datenschutzerklärung gilt für alle von uns durchgeführten Verarbeitungen personenbezogener Daten, sowohl im Rahmen der Erbringung unserer Leistungen als auch insbesondere auf unseren Webseiten, in mobilen Applikationen sowie innerhalb externer Onlinepräsenzen, wie z. B. unserer Social-Media-Profile (nachfolgend zusammenfassend bezeichnet als "Onlineangebot").</p>
+        <p>Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer
+personenbezogenen Daten (nachfolgend auch kurz als "Daten" bezeichnet) wir zu welchen Zwecken und in welchem Umfang
+verarbeiten. Die Datenschutzerklärung gilt für alle von uns durchgeführten Verarbeitungen personenbezogener Daten,
+sowohl im Rahmen der Erbringung unserer Leistungen als auch insbesondere auf unseren Webseiten, in mobilen
+Applikationen sowie innerhalb externer Onlinepräsenzen, wie z. B. unserer Social-Media-Profile (nachfolgend
+zusammenfassend bezeichnet als "Onlineangebot").</p>
         <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
         <p>Stand: 1. März 2026</p>
 
@@ -842,10 +774,10 @@
         Heckenrosenstr. 9<br>
         86609 Donauwörth</p>
         <p>E-Mail-Adresse: <a href="mailto:klaus.rattenbacher@outlook.com">klaus.rattenbacher@outlook.com</a></p>
-        <p>Impressum: <a href="javascript:void(0)" onclick="window.top.open('https://www.poetry-slam-beginner-award.de/', '_blank');">poetry-slam-beginner-award.de</a></p>
 
         <h2 id="mOverview">Übersicht der Verarbeitungen</h2>
-        <p>Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.</p>
+        <p>Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung
+zusammen und verweist auf die betroffenen Personen.</p>
         <h3>Arten der verarbeiteten Daten</h3>
         <ul>
             <li>Kontaktdaten.</li>
@@ -870,99 +802,126 @@
         </ul>
 
         <h2 id="m2427">Maßgebliche Rechtsgrundlagen</h2>
-        <p><strong>Maßgebliche Rechtsgrundlagen nach der DSGVO:</strong> Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten. Bitte nehmen Sie zur Kenntnis, dass neben den Regelungen der DSGVO nationale Datenschutzvorgaben in Ihrem bzw. unserem Wohn- oder Sitzland gelten können.</p>
+        <p><strong>Maßgebliche Rechtsgrundlagen nach der DSGVO:</strong> Im Folgenden erhalten Sie eine Übersicht der
+Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten.</p>
         <ul>
-            <li><strong>Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO)</strong> – Die betroffene Person hat ihre Einwilligung in die Verarbeitung der sie betreffenden personenbezogenen Daten für einen spezifischen Zweck oder mehrere bestimmte Zwecke gegeben.</li>
-            <li><strong>Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO)</strong> – Die Verarbeitung ist für die Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist, oder zur Durchführung vorvertraglicher Maßnahmen erforderlich.</li>
-            <li><strong>Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</strong> – Die Verarbeitung ist zur Wahrung der berechtigten Interessen des Verantwortlichen oder eines Dritten notwendig.</li>
+            <li><strong>Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO)</strong> – Die betroffene Person hat ihre
+Einwilligung in die Verarbeitung der sie betreffenden personenbezogenen Daten für einen spezifischen Zweck
+gegeben.</li>
+            <li><strong>Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO)</strong> –
+Die Verarbeitung ist für die Erfüllung eines Vertrags erforderlich.</li>
+            <li><strong>Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</strong> – Die Verarbeitung ist zur
+Wahrung der berechtigten Interessen des Verantwortlichen notwendig.</li>
         </ul>
-        <p><strong>Nationale Datenschutzregelungen in Deutschland:</strong> Zusätzlich zu den Datenschutzregelungen der DSGVO gelten nationale Regelungen zum Datenschutz in Deutschland, insbesondere das Bundesdatenschutzgesetz (BDSG).</p>
+        <p><strong>Nationale Datenschutzregelungen in Deutschland:</strong> Zusätzlich gelten nationale Regelungen,
+insbesondere das Bundesdatenschutzgesetz (BDSG).</p>
 
         <h2 id="m27">Sicherheitsmaßnahmen</h2>
-        <p>Wir treffen nach Maßgabe der gesetzlichen Vorgaben unter Berücksichtigung des Stands der Technik, der Implementierungskosten und der Art, des Umfangs, der Umstände und der Zwecke der Verarbeitung sowie der unterschiedlichen Eintrittswahrscheinlichkeiten und des Ausmaßes der Bedrohung der Rechte und Freiheiten natürlicher Personen geeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten.</p>
-        <p>Zu den Maßnahmen gehören insbesondere die Sicherung der Vertraulichkeit, Integrität und Verfügbarkeit von Daten durch Kontrolle des physischen und elektronischen Zugangs zu den Daten.</p>
-        <p><strong>TLS-/SSL-Verschlüsselung (HTTPS):</strong> Um die Daten der Nutzer zu schützen, setzen wir auf TLS-/SSL-Verschlüsselung. Wenn eine Website durch ein SSL-/TLS-Zertifikat gesichert ist, wird dies durch die Anzeige von HTTPS in der URL signalisiert.</p>
+        <p>Wir treffen nach Maßgabe der gesetzlichen Vorgaben geeignete technische und organisatorische Maßnahmen, um
+ein dem Risiko angemessenes Schutzniveau zu gewährleisten.</p>
+        <p>Zu den Maßnahmen gehören insbesondere die Sicherung der Vertraulichkeit, Integrität und Verfügbarkeit von
+Daten durch Kontrolle des physischen und elektronischen Zugangs.</p>
+        <p><strong>TLS-/SSL-Verschlüsselung (HTTPS):</strong> Zum Schutz der übertragenen Daten setzen wir auf
+TLS-/SSL-Verschlüsselung. Dies wird durch HTTPS in der URL signalisiert.</p>
 
         <h2 id="m25">Übermittlung von personenbezogenen Daten</h2>
-        <p>Im Rahmen unserer Verarbeitung von personenbezogenen Daten kommt es vor, dass diese an andere Stellen, Unternehmen, rechtlich selbstständige Organisationseinheiten oder Personen übermittelt werden. Zu den Empfängern dieser Daten können z. B. mit IT-Aufgaben beauftragte Dienstleister gehören oder Anbieter von Diensten und Inhalten, die in eine Website eingebunden sind. In solchen Fällen beachten wir die gesetzlichen Vorgaben und schließen insbesondere entsprechende Verträge bzw. Vereinbarungen, die dem Schutz Ihrer Daten dienen, mit den Empfängern Ihrer Daten ab.</p>
+        <p>Im Rahmen unserer Verarbeitung kommt es vor, dass Daten an andere Stellen übermittelt werden, z. B. an
+IT-Dienstleister oder Anbieter von Diensten, die in unsere Website eingebunden sind. In solchen Fällen schließen wir
+entsprechende Verträge zum Schutz Ihrer Daten ab.</p>
 
         <h2 id="m24">Internationale Datentransfers</h2>
-        <p>Sofern wir Daten in ein Drittland (außerhalb der EU oder des EWR) übermitteln, erfolgt dies stets im Einklang mit den gesetzlichen Vorgaben. Für Datenübermittlungen in die USA stützen wir uns vorrangig auf das Data Privacy Framework (DPF), welches durch einen Angemessenheitsbeschluss der EU-Kommission vom 10.07.2023 als sicherer Rechtsrahmen anerkannt wurde. Zusätzlich haben wir mit den jeweiligen Anbietern Standardvertragsklauseln abgeschlossen.</p>
-        <p>Weitere Informationen zum DPF finden Sie unter: <a href="javascript:void(0)" onclick="window.top.open('https://www.dataprivacyframework.gov/', '_blank');">https://www.dataprivacyframework.gov/</a></p>
-        <p>Informationen zu Drittlandtransfers und geltenden Angemessenheitsbeschlüssen können Sie dem Informationsangebot der EU-Kommission entnehmen: <a href="javascript:void(0)" onclick="window.top.open('https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection_en?prefLang=de', '_blank');">https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection_en</a></p>
+        <p>Sofern wir Daten in ein Drittland (außerhalb der EU oder des EWR) übermitteln, erfolgt dies stets im
+Einklang mit den gesetzlichen Vorgaben. Für Datenübermittlungen in die USA stützen wir uns vorrangig auf das Data
+Privacy Framework (DPF).</p>
+        <p>Weitere Informationen: <a href="javascript:void(0)"
+onclick="window.top.open('https://www.dataprivacyframework.gov/',
+'_blank');">https://www.dataprivacyframework.gov/</a></p>
 
         <h2 id="m12">Allgemeine Informationen zur Datenspeicherung und Löschung</h2>
-        <p>Wir löschen personenbezogene Daten, die wir verarbeiten, gemäß den gesetzlichen Bestimmungen, sobald die zugrundeliegenden Einwilligungen widerrufen werden oder keine weiteren rechtlichen Grundlagen für die Verarbeitung bestehen. Ausnahmen bestehen, wenn gesetzliche Pflichten oder besondere Interessen eine längere Aufbewahrung erfordern.</p>
-        <p>Insbesondere müssen Daten, die aus handels- oder steuerrechtlichen Gründen aufbewahrt werden müssen oder deren Speicherung notwendig ist zur Rechtsverfolgung oder zum Schutz der Rechte anderer natürlicher oder juristischer Personen, entsprechend archiviert werden.</p>
-        <p>Bei mehreren Angaben zur Aufbewahrungsdauer oder Löschungsfristen ist stets die längste Frist maßgeblich.</p>
-        <p>Gesetzliche Aufbewahrungsfristen nach deutschem Recht:</p>
+        <p>Wir löschen personenbezogene Daten gemäß den gesetzlichen Bestimmungen, sobald die zugrundeliegenden
+Einwilligungen widerrufen werden oder keine weiteren rechtlichen Grundlagen bestehen.</p>
+        <p>Gesetzliche Aufbewahrungsfristen:</p>
         <ul>
-            <li><strong>10 Jahre</strong> – Bücher, Aufzeichnungen, Jahresabschlüsse, Inventare (§ 147 Abs. 1 Nr. 1 AO, § 257 Abs. 1 Nr. 1 HGB).</li>
-            <li><strong>8 Jahre</strong> – Buchungsbelege, Rechnungen und Kostenbelege (§ 147 Abs. 1 Nr. 4 AO, § 257 Abs. 1 Nr. 4 HGB).</li>
-            <li><strong>6 Jahre</strong> – Übrige Geschäftsunterlagen, empfangene Handels- oder Geschäftsbriefe (§ 147 Abs. 1 Nr. 2, 3, 5 AO, § 257 Abs. 1 Nr. 2 u. 3 HGB).</li>
+            <li><strong>10 Jahre</strong> – Bücher, Aufzeichnungen, Jahresabschlüsse (§ 147 AO, § 257 HGB).</li>
+            <li><strong>8 Jahre</strong> – Buchungsbelege, Rechnungen (§ 147 AO, § 257 HGB).</li>
+            <li><strong>6 Jahre</strong> – Übrige Geschäftsunterlagen (§ 147 AO, § 257 HGB).</li>
             <li><strong>3 Jahre</strong> – Daten im Rahmen der gesetzlichen Verjährungsfrist (§§ 195, 199 BGB).</li>
         </ul>
 
         <h2 id="m10">Rechte der betroffenen Personen</h2>
         <p>Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu (Art. 15 bis 21 DSGVO):</p>
         <ul>
-            <li><strong>Widerspruchsrecht:</strong> Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung der Sie betreffenden personenbezogenen Daten Widerspruch einzulegen.</li>
-            <li><strong>Widerrufsrecht bei Einwilligungen:</strong> Sie haben das Recht, erteilte Einwilligungen jederzeit zu widerrufen.</li>
-            <li><strong>Auskunftsrecht:</strong> Sie haben das Recht, eine Bestätigung darüber zu verlangen, ob betreffende Daten verarbeitet werden und auf Auskunft über diese Daten sowie auf weitere Informationen und Kopie der Daten.</li>
-            <li><strong>Recht auf Berichtigung:</strong> Sie haben das Recht, die Vervollständigung oder Berichtigung der Sie betreffenden unrichtigen Daten zu verlangen.</li>
-            <li><strong>Recht auf Löschung und Einschränkung der Verarbeitung:</strong> Sie haben das Recht, die Löschung Ihrer Daten oder alternativ eine Einschränkung der Verarbeitung zu verlangen.</li>
-            <li><strong>Recht auf Datenübertragbarkeit:</strong> Sie haben das Recht, Ihre Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten.</li>
-            <li><strong>Beschwerde bei Aufsichtsbehörde:</strong> Sie haben das Recht auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde, insbesondere in dem Mitgliedstaat Ihres gewöhnlichen Aufenthaltsorts.</li>
+            <li><strong>Widerspruchsrecht:</strong> Sie haben das Recht, jederzeit gegen die Verarbeitung Ihrer Daten
+Widerspruch einzulegen.</li>
+            <li><strong>Widerrufsrecht bei Einwilligungen:</strong> Sie haben das Recht, erteilte Einwilligungen
+jederzeit zu widerrufen.</li>
+            <li><strong>Auskunftsrecht:</strong> Sie haben das Recht zu erfahren, ob und welche Daten von Ihnen
+verarbeitet werden.</li>
+            <li><strong>Recht auf Berichtigung:</strong> Sie haben das Recht, unrichtige Daten berichtigen zu
+lassen.</li>
+            <li><strong>Recht auf Löschung und Einschränkung:</strong> Sie haben das Recht, die Löschung oder
+Einschränkung der Verarbeitung Ihrer Daten zu verlangen.</li>
+            <li><strong>Recht auf Datenübertragbarkeit:</strong> Sie haben das Recht, Ihre Daten in einem
+maschinenlesbaren Format zu erhalten.</li>
+            <li><strong>Beschwerderecht:</strong> Sie haben das Recht auf Beschwerde bei einer
+Datenschutz-Aufsichtsbehörde.</li>
         </ul>
 
         <h2 id="m225">Bereitstellung des Onlineangebots und Webhosting</h2>
-        <p>Wir verarbeiten die Daten der Nutzer, um ihnen unsere Online-Dienste zur Verfügung stellen zu können. Zu diesem Zweck verarbeiten wir die IP-Adresse des Nutzers, die notwendig ist, um die Inhalte und Funktionen unserer Online-Dienste an den Browser oder das Endgerät der Nutzer zu übermitteln.</p>
+        <p>Wir verarbeiten die IP-Adresse der Nutzer, um unsere Online-Dienste bereitzustellen.</p>
         <ul>
-            <li><strong>Verarbeitete Datenarten:</strong> Nutzungsdaten, Meta-, Kommunikations- und Verfahrensdaten, Protokolldaten.</li>
+            <li><strong>Verarbeitete Datenarten:</strong> Nutzungsdaten, Meta-, Kommunikations- und Verfahrensdaten,
+Protokolldaten.</li>
             <li><strong>Betroffene Personen:</strong> Nutzer.</li>
-            <li><strong>Zwecke der Verarbeitung:</strong> Bereitstellung des Onlineangebotes, Informationstechnische Infrastruktur, Sicherheitsmaßnahmen.</li>
             <li><strong>Rechtsgrundlagen:</strong> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).</li>
         </ul>
-        <p><strong>Erhebung von Zugriffsdaten und Logfiles:</strong> Der Zugriff auf unser Onlineangebot wird in Form von Server-Logfiles protokolliert. Zu den Serverlogfiles können Adresse und Name der abgerufenen Webseiten, Datum und Uhrzeit des Abrufs, übertragene Datenmengen, Browsertyp, Betriebssystem, Referrer URL und IP-Adressen gehören. Logfile-Informationen werden für die Dauer von maximal 30 Tagen gespeichert und danach gelöscht oder anonymisiert.</p>
+        <p><strong>Logfiles:</strong> Der Zugriff auf unser Onlineangebot wird in Server-Logfiles protokolliert. Diese
+ werden maximal 30 Tage gespeichert und danach gelöscht oder anonymisiert.</p>
 
         <h2 id="m134">Einsatz von Cookies</h2>
-        <p>Unter dem Begriff „Cookies" werden Funktionen verstanden, die Informationen auf Endgeräten der Nutzer speichern und aus ihnen auslesen. Wir verwenden Cookies gemäß den gesetzlichen Vorschriften. Dazu holen wir, wenn erforderlich, vorab die Zustimmung der Nutzer ein. Ist eine Zustimmung nicht notwendig, setzen wir auf unsere berechtigten Interessen.</p>
-        <p><strong>Speicherdauer:</strong></p>
+        <p>Wir verwenden Cookies gemäß den gesetzlichen Vorschriften. Dazu holen wir, wenn erforderlich, vorab die
+Zustimmung der Nutzer ein.</p>
         <ul>
-            <li><strong>Temporäre Cookies (Session-Cookies):</strong> Werden spätestens gelöscht, nachdem ein Nutzer das Onlineangebot verlassen und sein Endgerät geschlossen hat.</li>
-            <li><strong>Permanente Cookies:</strong> Bleiben auch nach dem Schließen des Endgeräts gespeichert; die Speicherdauer kann bis zu zwei Jahre betragen.</li>
+            <li><strong>Temporäre Cookies (Session-Cookies):</strong> Werden gelöscht, nachdem der Nutzer den Browser
+schließt.</li>
+            <li><strong>Permanente Cookies:</strong> Bleiben gespeichert, bis zu zwei Jahre.</li>
         </ul>
-        <p><strong>Allgemeine Hinweise zum Widerruf und Widerspruch (Opt-out):</strong> Nutzer können die von ihnen abgegebenen Einwilligungen jederzeit widerrufen und zudem einen Widerspruch gegen die Verarbeitung mittels der Privatsphäre-Einstellungen ihres Browsers erklären.</p>
-        <ul>
-            <li><strong>Verarbeitete Datenarten:</strong> Meta-, Kommunikations- und Verfahrensdaten.</li>
-            <li><strong>Betroffene Personen:</strong> Nutzer.</li>
-            <li><strong>Rechtsgrundlagen:</strong> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO), Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO).</li>
-        </ul>
+        <p><strong>Rechtsgrundlagen:</strong> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO), Einwilligung
+(Art. 6 Abs. 1 S. 1 lit. a) DSGVO).</p>
 
         <h2 id="m182">Kontakt- und Anfrageverwaltung</h2>
-        <p>Bei der Kontaktaufnahme mit uns (z. B. per E-Mail) werden die Angaben der anfragenden Personen verarbeitet, soweit dies zur Beantwortung der Kontaktanfragen und etwaiger angefragter Maßnahmen erforderlich ist.</p>
+        <p>Bei der Kontaktaufnahme per E-Mail werden die Angaben der anfragenden Personen zur Beantwortung der
+Anfragen verarbeitet.</p>
         <ul>
-            <li><strong>Verarbeitete Datenarten:</strong> Kontaktdaten, Inhaltsdaten, Meta-, Kommunikations- und Verfahrensdaten.</li>
+            <li><strong>Verarbeitete Datenarten:</strong> Kontaktdaten, Inhaltsdaten, Meta-, Kommunikations- und
+Verfahrensdaten.</li>
             <li><strong>Betroffene Personen:</strong> Kommunikationspartner.</li>
-            <li><strong>Zwecke der Verarbeitung:</strong> Kommunikation, Organisations- und Verwaltungsverfahren, Bereitstellung des Onlineangebotes.</li>
-            <li><strong>Aufbewahrung und Löschung:</strong> Löschung entsprechend den Angaben im Abschnitt „Allgemeine Informationen zur Datenspeicherung und Löschung".</li>
-            <li><strong>Rechtsgrundlagen:</strong> Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO), Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).</li>
+            <li><strong>Rechtsgrundlagen:</strong> Vertragserfüllung (Art. 6 Abs. 1 S. 1 lit. b) DSGVO), Berechtigte
+Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).</li>
         </ul>
-        <p><strong>Kontaktformular:</strong> Bei Kontaktaufnahme per E-Mail verarbeiten wir die uns übermittelten personenbezogenen Daten zur Beantwortung und Bearbeitung des jeweiligen Anliegens. Wir nutzen diese Daten ausschließlich für den angegebenen Zweck der Kontaktaufnahme und Kommunikation.</p>
 
         <h2 id="m15">Änderung und Aktualisierung</h2>
-        <p>Wir bitten Sie, sich regelmäßig über den Inhalt unserer Datenschutzerklärung zu informieren. Wir passen die Datenschutzerklärung an, sobald die Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich machen. Wir informieren Sie, sobald durch die Änderungen eine Mitwirkungshandlung Ihrerseits (z. B. Einwilligung) oder eine sonstige individuelle Benachrichtigung erforderlich wird.</p>
+        <p>Wir bitten Sie, sich regelmäßig über den Inhalt unserer Datenschutzerklärung zu informieren. Wir passen die
+ Datenschutzerklärung an, sobald Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich
+machen.</p>
 
         <h2 id="m42">Begriffsdefinitionen</h2>
         <ul>
-            <li><strong>Inhaltsdaten:</strong> Informationen, die im Zuge der Erstellung, Bearbeitung und Veröffentlichung von Inhalten generiert werden, z. B. Texte, Bilder, Videos und Metadaten.</li>
-            <li><strong>Kontaktdaten:</strong> Informationen, die die Kommunikation mit Personen ermöglichen, z. B. Telefonnummern, Adressen und E-Mail-Adressen.</li>
-            <li><strong>Meta-, Kommunikations- und Verfahrensdaten:</strong> Informationen über die Art und Weise, wie Daten verarbeitet, übermittelt und verwaltet werden, z. B. IP-Adressen, Zeitangaben und Identifikationsnummern.</li>
-            <li><strong>Nutzungsdaten:</strong> Informationen, die erfassen, wie Nutzer mit digitalen Produkten interagieren, z. B. Seitenaufrufe, Verweildauer und verwendete Geräte.</li>
-            <li><strong>Personenbezogene Daten:</strong> Alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen.</li>
-            <li><strong>Protokolldaten:</strong> Informationen über Ereignisse oder Aktivitäten, die in einem System protokolliert wurden, z. B. Zeitstempel, IP-Adressen und Fehlermeldungen.</li>
-            <li><strong>Verantwortlicher:</strong> Die natürliche oder juristische Person, die über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.</li>
-            <li><strong>Verarbeitung:</strong> Jeder Vorgang im Zusammenhang mit personenbezogenen Daten, z. B. Erheben, Speichern, Übermitteln oder Löschen.</li>
+            <li><strong>Inhaltsdaten:</strong> Informationen, die im Zuge der Erstellung und Veröffentlichung von
+Inhalten generiert werden.</li>
+            <li><strong>Kontaktdaten:</strong> Informationen zur Kommunikation, z. B. Telefonnummern, Adressen,
+E-Mail-Adressen.</li>
+            <li><strong>Meta-, Kommunikations- und Verfahrensdaten:</strong> Informationen über die Art der
+Datenverarbeitung, z. B. IP-Adressen und Zeitangaben.</li>
+            <li><strong>Nutzungsdaten:</strong> Informationen über die Interaktion von Nutzern mit digitalen
+Produkten.</li>
+            <li><strong>Personenbezogene Daten:</strong> Alle Informationen, die sich auf eine identifizierbare
+natürliche Person beziehen.</li>
+            <li><strong>Protokolldaten:</strong> Informationen über Ereignisse in einem System, z. B. Zeitstempel und
+IP-Adressen.</li>
+            <li><strong>Verantwortlicher:</strong> Die Person, die über die Zwecke und Mittel der Datenverarbeitung
+entscheidet.</li>
+            <li><strong>Verarbeitung:</strong> Jeder Vorgang im Zusammenhang mit personenbezogenen Daten.</li>
         </ul>
 
         <p class="ds-seal">
@@ -974,7 +933,7 @@
     </div>
 
     <div class="ds-footer">
-        <p>© 2026 Poetry Slam Beginner Award</p>
+        <p>© 2026 Poetry Slam Donauwörth</p>
         <p style="margin-top: 10px;">
             <button class="ds-back" onclick="showPage('main')">← Zurück zur Hauptseite</button>
         </p>
@@ -983,84 +942,10 @@
 </div>
 
 
-<script>
-    function showPage(page) {
-        document.getElementById('page-main').classList.remove('active');
-        document.getElementById('page-datenschutz').classList.remove('active');
-        document.getElementById('page-' + page).classList.add('active');
-        window.scrollTo(0, 0);
-    }
-
-    (function() {
-        // ─── HIER TICKET-STATUS PFLEGEN ─────────────────────────────
-        // Freitext rechts neben dem Button, z.B. 'VVK ab 1. Sept' oder 'VVK läuft'. Leer ('') = nichts anzeigen.
-        var ticketStatus = {
-            'ticketstatus-4': 'VVK läuft',
-            'ticketstatus-5': ''
-        };
-        // ────────────────────────────────────────────────────────────
-        Object.keys(ticketStatus).forEach(function(id) {
-            var el = document.getElementById(id);
-            if (el) el.textContent = ticketStatus[id];
-        });
-
-        // Abgelaufene Event-Kacheln 1 Tag nach dem Termin ausblenden
-        function pruneEvents() {
-            var items = document.querySelectorAll('.event-item[data-datum]');
-            items.forEach(function(it) {
-                var ziel = new Date(it.getAttribute('data-datum'));
-                if ((ziel - new Date()) <= -86400000) it.style.display = 'none';
-            });
-        }
-        pruneEvents();
-        setInterval(pruneEvents, 60000);
-    })();
-
-    (function() {
-        var events = [
-            { date: new Date('2026-10-01T19:30:00'), prefix: 'cd1', box: 'countdown-box-1' },
-            { date: new Date('2026-11-13T19:00:00'), prefix: 'cd2', box: 'countdown-box-2' }
-        ];
-
-        function update() {
-            var now = new Date();
-            var anyActive = false;
-
-            for (var i = 0; i < events.length; i++) {
-                var ev = events[i];
-                var diff = ev.date - now;
-                var box = document.getElementById(ev.box);
-
-                if (diff <= 0) {
-                    box.style.display = 'none';
-                    continue;
-                }
-
-                anyActive = true;
-                box.style.display = '';
-                document.getElementById(ev.prefix + '-days').textContent    = Math.floor(diff / 86400000);
-                document.getElementById(ev.prefix + '-hours').textContent   = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
-                document.getElementById(ev.prefix + '-minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-                document.getElementById(ev.prefix + '-seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
-            }
-
-            if (!anyActive) {
-                var firstBox = document.getElementById(events[0].box);
-                firstBox.style.display = '';
-                document.getElementById(events[0].prefix + '-label').textContent = '';
-                document.getElementById('countdown-1').innerHTML =
-                    '<p style="color:#FFD700;font-size:1.1em;">Neue Veranstaltungen folgen bald!</p>';
-            }
-        }
-        update();
-        setInterval(update, 1000);
-    })();
-</script>
-
 <!-- Slams offen für Bewerbungen (hier pflegen) -->
 <ul id="bewerbung-offen" style="display:none">
     <!-- Einträge mit <li data-datum="TT. Monat JJJJ" data-ort="Ort">Titel</li> -->
-    <!-- Beispiel: <li data-datum="01. Oktober 2026" data-ort="Dillingen a.d.Donau">PSBA #4 – Lange Nacht der Demokratie</li> -->
+    <!-- Beispiel: <li data-datum="15. März 2027" data-ort="Donauwörth">Poetry Slam Donauwörth #12</li> -->
 </ul>
 
 <!-- Bewerbungs-Modal -->
@@ -1070,7 +955,7 @@
         <h2>Auftrittsanfrage</h2>
 
         <div class="modal-notice" id="modal-event-list">
-            <!-- wird per JS aus der Event-Liste befüllt -->
+            <!-- wird per JS befüllt -->
         </div>
 
         <form id="bewerbungForm" onsubmit="submitBewerbung(event)">
@@ -1119,8 +1004,79 @@
 </div>
 
 <script>
+    /* ══════════════════════════════════════════════════════════
+       ★★★  TICKET-STATUS HIER ÄNDERN  ★★★
+       Nur den Text zwischen den Anführungszeichen anpassen.
+       Leer lassen ('') = es wird nichts angezeigt.
+       ══════════════════════════════════════════════════════════ */
+    var TICKET_SLAM_11 = 'VVK läuft';   // Slam #11 (12.11.2026)
+    var TICKET_SLAM_12 = '';            // Slam #12 (15.04.2027)
+    /* ═══════════  Ab hier nichts mehr ändern  ═══════════════════ */
+
+    function showPage(page) {
+        document.getElementById('page-main').classList.remove('active');
+        document.getElementById('page-datenschutz').classList.remove('active');
+        document.getElementById('page-' + page).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    (function() {
+        var ticketstatus = {
+            'ticketstatus-11': TICKET_SLAM_11,
+            'ticketstatus-12': TICKET_SLAM_12
+        };
+        // ────────────────────────────────────────────────────────────
+        Object.keys(ticketstatus).forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.textContent = ticketstatus[id];
+        });
+
+        var slams = [
+            {
+                ziel: new Date('2026-11-12T19:00:00'),
+                box: 'countdown-11', p: 'cd11',
+                event: 'event-11'
+            },
+            {
+                ziel: new Date('2027-04-15T19:00:00'),
+                box: 'countdown-12', p: 'cd12',
+                event: 'event-12'
+            }
+        ];
+
+        function setValue(cls, val) {
+            var els = document.getElementsByClassName(cls);
+            for (var i = 0; i < els.length; i++) els[i].textContent = val;
+        }
+
+        function update() {
+            slams.forEach(function(s) {
+                var box = document.getElementById(s.box);
+                var eventBox = document.getElementById(s.event);
+                if (!box) return;
+                var diff = s.ziel - new Date();
+
+                // Veranstaltung + 1 Tag vorbei → Kachel ausblenden
+                if (diff <= -86400000) {
+                    if (eventBox) eventBox.style.display = 'none';
+                    return;
+                }
+                // Am Veranstaltungstag (läuft/heute)
+                if (diff <= 0) {
+                    box.innerHTML = '<p style="color:#FFD700;font-size:1.2em;">Der Slam ist heute! 🎤</p>';
+                    return;
+                }
+                setValue(s.p + '-days',    Math.floor(diff / 86400000));
+                setValue(s.p + '-hours',   String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0'));
+                setValue(s.p + '-minutes', String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0'));
+                setValue(s.p + '-seconds', String(Math.floor((diff % 60000) / 1000)).padStart(2, '0'));
+            });
+        }
+        update();
+        setInterval(update, 1000);
+    })();
+
     function openBewerbungModal() {
-        // Offene Bewerbungs-Slams aus der versteckten Liste lesen
         var notice = document.getElementById('modal-event-list');
         var offene = document.querySelectorAll('#bewerbung-offen li');
         var html;
@@ -1140,12 +1096,11 @@
             html += '<p>Oder - bewirb dich einfach Initiativ!</p>';
         }
         notice.innerHTML = html;
+        document.getElementById('channel-copy-note').textContent = '';
         document.getElementById('bewerbungModal').classList.add('active');
-        document.body.style.overflow = 'hidden';
     }
     function closeBewerbungModal() {
         document.getElementById('bewerbungModal').classList.remove('active');
-        document.body.style.overflow = '';
     }
     function closeBewerbungModalOnOverlay(e) {
         if (e.target === document.getElementById('bewerbungModal')) closeBewerbungModal();
@@ -1153,9 +1108,10 @@
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeBewerbungModal();
     });
+
     var SOCIAL_URLS = {
-        instagram: 'https://www.instagram.com/poetryslambeginner/',
-        facebook:  'https://www.facebook.com/profile.php?id=61558313168258'
+        instagram: 'https://www.instagram.com/poetryslamdon/',
+        facebook:  'https://www.facebook.com/slamdonauwoerth/'
     };
 
     function buildBewerbungText() {
@@ -1182,7 +1138,7 @@
         e.preventDefault();
         var body = buildBewerbungText();
         var mailto = 'mailto:klaus.rattenbacher@outlook.com' +
-            '?subject=' + encodeURIComponent('Bewerbung Poetry Slam Beginner Award') +
+            '?subject=' + encodeURIComponent('Bewerbung Poetry Slam Donauwörth') +
             '&body=' + encodeURIComponent(body);
 
         window.location.href = mailto;
@@ -1199,7 +1155,6 @@
         for (var i = 0; i < pflicht.length; i++) {
             var feld = document.getElementById(pflicht[i].id);
             if (!feld.value.trim()) {
-                feld.focus();
                 document.getElementById('channel-copy-note').textContent =
                     '⚠️ Bitte fülle noch das Feld „' + pflicht[i].label + '" aus.';
                 return;
