@@ -125,6 +125,20 @@
             transform: translateY(-1px);
         }
 
+        .event-ticket-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .event-ticket-row .event-ticket { margin-top: 0; }
+        .event-ticket-status {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #555;
+        }
+
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -584,30 +598,36 @@
             <h2>Nächste Veranstaltungen</h2>
             <div class="event-list">
 
-                <div class="event-item">
+                <div class="event-item" id="event-4" data-datum="2026-10-01T19:30:00">
                     <div class="event-date">01. Oktober 2026</div>
                     <div class="event-title">Poetry Slam Beginner Award #4 – Lange Nacht der Demokratie</div>
                     <div class="event-venue">Chili Kultur Kunst Kneipe · Dillingen a.d.Donau</div>
                     <div class="event-address">Georg-Schmid-Ring 1 (Zugang: Oberdillinger Straße) · 89407 Dillingen</div>
-                    <div class="event-time">Beginn: 19:00 Uhr</div>
-                    <a href="javascript:void(0)"
-                       onclick="window.top.open('https://ratsontour.tickettune.com/ratsontour/detail/index/sArticle/14', '_blank');"
-                       class="event-ticket">
-                        🎟️ Tickets sichern
-                    </a>
+                    <div class="event-time">Einlass: 18:30 Uhr | Beginn: 19:30 Uhr</div>
+                    <div class="event-ticket-row">
+                        <a href="javascript:void(0)"
+                           onclick="window.top.open('https://ratsontour.tickettune.com/ratsontour/detail/index/sArticle/14', '_blank');"
+                           class="event-ticket">
+                            🎟️ Tickets sichern
+                        </a>
+                        <span class="event-ticket-status" id="ticketstatus-4"></span>
+                    </div>
                 </div>
 
-                <div class="event-item">
+                <div class="event-item" id="event-5" data-datum="2026-11-13T19:00:00">
                     <div class="event-date">13. November 2026</div>
                     <div class="event-title">Poetry Slam Beginner Award #5 – Wertingen</div>
                     <div class="event-venue">Kleine Kulturbühne Wertingen</div>
                     <div class="event-address">Josef-Frank-Straße 1, 86637 Wertingen</div>
-                    <div class="event-time">Beginn: 19:00 Uhr</div>
-                    <a href="javascript:void(0)"
-                       onclick="window.top.open('https://ratsontour.tickettune.com/ratsontour/detail/index/sArticle/15', '_blank');"
-                       class="event-ticket">
-                        🎟️ Tickets sichern
-                    </a>
+                    <div class="event-time">Einlass: 18:00 Uhr | Beginn: 19:00 Uhr</div>
+                    <div class="event-ticket-row">
+                        <a href="javascript:void(0)"
+                           onclick="window.top.open('https://ratsontour.tickettune.com/ratsontour/detail/index/sArticle/15', '_blank');"
+                           class="event-ticket">
+                            🎟️ Tickets sichern
+                        </a>
+                        <span class="event-ticket-status" id="ticketstatus-5"></span>
+                    </div>
                 </div>
 
             </div>
@@ -972,8 +992,33 @@
     }
 
     (function() {
+        // ─── HIER TICKET-STATUS PFLEGEN ─────────────────────────────
+        // Freitext rechts neben dem Button, z.B. 'VVK ab 1. Sept' oder 'VVK läuft'. Leer ('') = nichts anzeigen.
+        var ticketStatus = {
+            'ticketstatus-4': 'VVK läuft',
+            'ticketstatus-5': ''
+        };
+        // ────────────────────────────────────────────────────────────
+        Object.keys(ticketStatus).forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.textContent = ticketStatus[id];
+        });
+
+        // Abgelaufene Event-Kacheln 1 Tag nach dem Termin ausblenden
+        function pruneEvents() {
+            var items = document.querySelectorAll('.event-item[data-datum]');
+            items.forEach(function(it) {
+                var ziel = new Date(it.getAttribute('data-datum'));
+                if ((ziel - new Date()) <= -86400000) it.style.display = 'none';
+            });
+        }
+        pruneEvents();
+        setInterval(pruneEvents, 60000);
+    })();
+
+    (function() {
         var events = [
-            { date: new Date('2026-10-01T19:00:00'), prefix: 'cd1', box: 'countdown-box-1' },
+            { date: new Date('2026-10-01T19:30:00'), prefix: 'cd1', box: 'countdown-box-1' },
             { date: new Date('2026-11-13T19:00:00'), prefix: 'cd2', box: 'countdown-box-2' }
         ];
 
