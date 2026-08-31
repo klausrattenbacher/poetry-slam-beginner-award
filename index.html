@@ -522,6 +522,39 @@
             color: #6a1b9a;
             min-height: 1.2em;
         }
+        .intro-section {
+            background: url('https://img1.wsimg.com/isteam/ip/b3750489-1fb8-4215-899c-095dfbba0773/blob-69ae7bd.png') center/cover no-repeat;
+            position: relative;
+            color: white;
+            text-align: center;
+            padding: 80px 20px 70px;
+        }
+        .intro-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+        }
+        .intro-section > * { position: relative; }
+        .intro-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        }
+        .intro-section p {
+            font-size: 1.15em;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .info-bar {
+            background: white;
+            color: #1a3a6b;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -534,6 +567,15 @@
     <header style="background: white; padding: 20px 30px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
         <img src="logo.jpeg" alt="Poetry Slam Beginner Award Logo" style="max-height: 180px;">
     </header>
+
+    <!-- KINOSESSEL-INTRO -->
+    <div class="intro-section">
+        <h2>Es dauert noch ein wenig bis zum nächsten Slam</h2>
+        <p>Wir haben wieder ein Top LineUp, lasst Euch überraschen!</p>
+    </div>
+
+    <!-- INFO-STREIFEN -->
+    <div class="info-bar">Informationen und Poetry Slam Tickets</div>
 
     <div class="hero">
         <h1 class="hero-title">Poetry Slam Beginner Award</h1>
