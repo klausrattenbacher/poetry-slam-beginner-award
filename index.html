@@ -603,22 +603,6 @@
             <h2>Nächste Veranstaltungen</h2>
             <div class="event-list">
 
-                <div class="event-item" id="event-4" data-datum="2026-10-01T19:30:00">
-                    <div class="event-date">01. Oktober 2026</div>
-                    <div class="event-title">Poetry Slam Beginner Award #4 – Lange Nacht der Demokratie</div>
-                    <div class="event-venue">Chili Kultur Kunst Kneipe · Dillingen a.d.Donau</div>
-                    <div class="event-address">Georg-Schmid-Ring 1 (Zugang: Oberdillinger Straße) · 89407 Dillingen</div>
-                    <div class="event-time">Einlass: 18:30 Uhr | Beginn: 19:30 Uhr</div>
-                    <div class="event-ticket-row">
-                        <a href="javascript:void(0)"
-                           onclick="window.top.open('https://ratsontour.tickettune.com/ratsontour/detail/index/sArticle/14', '_blank');"
-                           class="event-ticket">
-                            🎟️ Tickets sichern
-                        </a>
-                        <span class="event-ticket-status" id="ticketstatus-4"></span>
-                    </div>
-                </div>
-
                 <div class="event-item" id="event-5" data-datum="2026-11-13T19:00:00">
                     <div class="event-date">13. November 2026</div>
                     <div class="event-title">Poetry Slam Beginner Award #5 – Wertingen</div>
@@ -635,27 +619,6 @@
                     </div>
                 </div>
 
-            </div>
-            <div class="countdown-box" id="countdown-box-1">
-                <div class="countdown-label-next" id="cd1-label">Countdown bis Dillingen</div>
-                <div class="countdown" id="countdown-1">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd1-days">--</span>
-                        <span class="countdown-unit">Tage</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd1-hours">--</span>
-                        <span class="countdown-unit">Stunden</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd1-minutes">--</span>
-                        <span class="countdown-unit">Minuten</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd1-seconds">--</span>
-                        <span class="countdown-unit">Sekunden</span>
-                    </div>
-                </div>
             </div>
             <div class="countdown-box" id="countdown-box-2">
                 <div class="countdown-label-next" id="cd2-label">Countdown bis Wertingen</div>
@@ -992,8 +955,7 @@
        Nur den Text zwischen den Anführungszeichen anpassen.
        Leer lassen ('') = es wird nichts angezeigt.
        ══════════════════════════════════════════════════════════ */
-    var VVK_TEXT_DILLINGEN = 'VVK läuft';   // #4 Dillingen (01.10.2026)
-    var VVK_TEXT_WERTINGEN = 'VVK Start 26.September 2026';            // #5 Wertingen (13.11.2026)
+    var VVK_TEXT_WERTINGEN = 'VVK läuft';            // #5 Wertingen (13.11.2026)
     /* ═══════════  Ab hier nichts mehr ändern  ═══════════════════ */
 
     function showPage(page) {
@@ -1005,7 +967,6 @@
 
     (function() {
         var ticketStatus = {
-            'ticketstatus-4': VVK_TEXT_DILLINGEN,
             'ticketstatus-5': VVK_TEXT_WERTINGEN
         };
         // ────────────────────────────────────────────────────────────
@@ -1029,7 +990,6 @@
 
     (function() {
         var events = [
-            { date: new Date('2026-10-01T19:30:00'), prefix: 'cd1', box: 'countdown-box-1' },
             { date: new Date('2026-11-13T19:00:00'), prefix: 'cd2', box: 'countdown-box-2' }
         ];
 
@@ -1059,7 +1019,7 @@
                 var firstBox = document.getElementById(events[0].box);
                 firstBox.style.display = '';
                 document.getElementById(events[0].prefix + '-label').textContent = '';
-                document.getElementById('countdown-1').innerHTML =
+                document.getElementById(events[0].prefix.replace('cd', 'countdown-')).innerHTML =
                     '<p style="color:#FFD700;font-size:1.1em;">Neue Veranstaltungen folgen bald!</p>';
             }
         }
